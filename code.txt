@@ -1,3 +1,3 @@
 https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=867nxtorfvyz78&redirect_uri=http://localhost:8000&scope=r_liteprofile%20r_emailaddress%20w_member_social
 
-AQRViXOPs8A0oBb7kHaJPFJCv8yXKzfWzx3qDBwaLrvS82YUUdFuVp0OSMfgf0HTlOCIL3gq1o_6h4EACG-reXew4FVp6H2WfNhqhwRMxclD8ooJp1IoXgEoYKGe4Tt7FcP7jzLQW9kHn-ifuHkYxJEuxLfB40o7FWYnzCmYjrAOU9T0lP_rrzO_I_dB4Q
+CLIENT_SECRET = r"eSn4kF8wysqNA6XF"
