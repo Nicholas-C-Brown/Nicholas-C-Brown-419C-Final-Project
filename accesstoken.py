@@ -15,7 +15,7 @@ def getAccessToken(code):
 
     request = requests.get(url = URL, params=PARAMS)
 
-    data = request.json
+    data = request.json()
 
     print(data)
 
