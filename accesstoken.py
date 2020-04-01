@@ -17,6 +17,6 @@ def getAccessToken(code):
 
     data = request.json()
 
-    print(data)
+    print("DATA:",data,"\n")
 
-    return data
+    return data["access_token"], data["expires_in"]

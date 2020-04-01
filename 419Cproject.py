@@ -3,5 +3,7 @@ import accesstoken
 
 code = authorizationcode.getAuthCode()
 
-accessToken = accesstoken.getAccessToken(code)
+Token,expires = accesstoken.getAccessToken(code)
+
+print("ACCESS TOKEN:",Token,"EXPIRES:",expires)
 
