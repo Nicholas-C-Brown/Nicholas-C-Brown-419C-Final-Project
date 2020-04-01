@@ -31,7 +31,7 @@ def getAuthCode():
         #accept connections from outside
         (clientsocket, address) = serversocket.accept()
 
-        print("Connected to:",address)
+
 
         while True:
             data = clientsocket.recv(1024).decode("utf-8")
@@ -44,7 +44,6 @@ def getAuthCode():
     serversocket.close()
     clientsocket.close()
 
-    print("Code:",code)
     return code
 
 

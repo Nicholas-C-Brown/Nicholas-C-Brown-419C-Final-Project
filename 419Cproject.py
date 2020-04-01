@@ -5,4 +5,3 @@ code = authorizationcode.getAuthCode()
 
 accessToken = accesstoken.getAccessToken(code)
 
-print(accesstoken)
