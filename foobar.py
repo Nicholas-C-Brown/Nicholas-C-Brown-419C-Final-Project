@@ -1,4 +1,3 @@
-
 import requests
 import webbrowser
 import socket
@@ -35,6 +34,7 @@ while 1:
     (clientsocket, address) = serversocket.accept()
 
     print("CLIENT:",clientsocket)
+
 
 
 
