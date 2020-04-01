@@ -29,11 +29,23 @@ serversocket.bind((socket.gethostname(), 8000))
 
 serversocket.listen(1)
 
-while 1:
+while True:
     #accept connections from outside
     (clientsocket, address) = serversocket.accept()
 
-    print("CLIENT:",clientsocket)
+    print("Connected to:",address)
+
+    while True:
+        data = clientsocket.recv(1024).decode("utf-8")
+        value = data.split(" ")[1]
+        code = value[value.index("=")+1:len(value)]
+        break
+    break
+
+print("Code:",code)
+
+
+
 
 
 
