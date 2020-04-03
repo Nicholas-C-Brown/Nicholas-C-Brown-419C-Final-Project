@@ -1,6 +1,4 @@
 import requests
-import webbrowser
-import socket
 
 def getAccessToken(code):
     URL = "https://www.linkedin.com/oauth/v2/accessToken"

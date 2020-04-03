@@ -6,14 +6,17 @@ import socket
 def getAuthCode():
     URL = "https://www.linkedin.com/oauth/v2/authorization"
 
-    RESPONSE_TYPE = r"code"
-    CLIENT_ID = r"867nxtorfvyz78"
-    REDIRECT_URI = r"http://192.168.56.1:8000"
-    SCOPE = r"r_liteprofile"
+    RESPONSE_TYPE = "code"
+    CLIENT_ID = "867nxtorfvyz78"
+    REDIRECT_URI = "http://192.168.56.1:8000"
+    SCOPE = "r_liteprofile+r_emailaddress+w_member_social"
 
-    PARAMS = {"response_type":RESPONSE_TYPE,"client_id":CLIENT_ID,"redirect_uri":REDIRECT_URI,"scope":SCOPE}
+    URL += "?response_type="+RESPONSE_TYPE+"&client_id="+CLIENT_ID+"&redirect_uri="+REDIRECT_URI+"&scope="+SCOPE
 
-    request = requests.get(url = URL, params=PARAMS)
+    print(URL)
+
+    request = requests.get(url = URL)
+
 
     webbrowser.open(request.url)
 
@@ -31,7 +34,7 @@ def getAuthCode():
         #accept connections from outside
         (clientsocket, address) = serversocket.accept()
 
-
+        print("Connected to:",address)
 
         while True:
             data = clientsocket.recv(1024).decode("utf-8")
