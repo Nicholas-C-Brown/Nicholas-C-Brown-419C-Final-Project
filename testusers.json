@@ -2,23 +2,23 @@
     "Users": [
       {
         "Name" : "John Jacobs",
-        "Skills": []
+        "Skills": "Python, C, Java"
       },
       {
         "Name" : "Billy Bob",
-        "Skills": []
+        "Skills": "Gardening, Construction"
       },
       {
         "Name" : "Hose Ricardo",
-        "Skills": []
+        "Skills": "Video Editing, Photoshop, Illustrator"
       },
       {
         "Name" : "Tyrone Denim",
-        "Skills": []
+        "Skills": "Python, Crying"
       },
       {
         "Name" : "Joe Mahma",
-        "Skills": []
+        "Skills": "Dancing, Construction, Java"
       }
     ]
   }
