@@ -1,9 +1,12 @@
-import authorizationcode
-import accesstoken
+# import authorizationcode
+# import accesstoken
 
-code = authorizationcode.getAuthCode()
+#!! LinkedIn API doesn't work unfortunately
+# code = authorizationcode.getAuthCode()
 
-Token,expires = accesstoken.getAccessToken(code)
+# Token,expires = accesstoken.getAccessToken(code)
 
-print("ACCESS TOKEN:",Token,"\nEXPIRES:",expires)
+# print("ACCESS TOKEN:",Token,"\nEXPIRES:",expires)
+
+
 
