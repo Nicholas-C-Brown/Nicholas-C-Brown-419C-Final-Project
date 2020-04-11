@@ -5,5 +5,5 @@ code = authorizationcode.getAuthCode()
 
 Token,expires = accesstoken.getAccessToken(code)
 
-print("ACCESS TOKEN:",Token,"EXPIRES:",expires)
+print("ACCESS TOKEN:",Token,"\nEXPIRES:",expires)
 
