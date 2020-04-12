@@ -1,16 +1,16 @@
 import agglo
 from nltk.stem import PorterStemmer
 
-def agglouserjob(jobreqs, skillswordbag, userdict):
+def agglouserjob(jobreqs, skillswordbag, userdict, User):
     ps = PorterStemmer()
-    skills = userdict["Tye Boray1"]
+    skills = userdict[User]
     stemmedskills = []
     for skill in skills:
         tempskills = skill.split(" ")
         for tempskill in tempskills:
             stemmedskills.append(ps.stem(tempskill))
 
-    jobreqs["Tye Boray1"] = stemmedskills
+    jobreqs[User] = stemmedskills
     empty = []
     for key, reqs in jobreqs.items():
         if len(reqs)<1:

@@ -13,6 +13,7 @@ import scraping.findjobs as findjobs
 jobspath = "data/1jobs.json"
 urlspath = "data/urls.json"
 skillspath = "data/userSkills.json"
+User = "Jodie Foster4"
 
 # Search Google for accounts
 query = 'site:linkedin.com/in/ AND "University of British Columbia" AND "West Kelowna"'
@@ -50,7 +51,7 @@ skillswordbag = compileusers.stem_skills(allskills)
 
 jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag)
 
-names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict)
+names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, User)
 
 cosmatrix1 = agglo.matrix(vector1)
 
