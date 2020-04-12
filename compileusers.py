@@ -1,4 +1,6 @@
 import math
+from nltk.stem import PorterStemmer
+import string
 
 def compile(data):
     users = data["Users"]
@@ -45,6 +47,33 @@ def compile(data):
     print()
 
     return userdict, allskills, popskills
+
+def stem_skills(skills):
+
+    ps = PorterStemmer()
+
+    punctuationextra = "‘‘’“”â€1234567890(){}[]\uf0a7\n"
+
+    bagofwords = []
+
+    for skill in skills:
+        skill = skill.lower()
+
+        # split into words by white space
+        tokens = skill.split(" ")
+
+        # remove punctuation (and other weird characters) from each word
+        table = str.maketrans('', '', string.punctuation + punctuationextra)
+        stripped = [w.translate(table) for w in tokens]
+
+
+        for word in stripped:
+            stemmed_word = ps.stem(word)
+            bagofwords.append(stemmed_word)
+
+
+
+    return bagofwords
 
 
 

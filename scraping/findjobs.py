@@ -1,0 +1,70 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+import csv
+import json
+
+urls = []
+
+
+def getjobs(filepath):
+    # CODE ADAPTED FROM https://www.linkedin.com/pulse/how-easy-scraping-data-from-linkedin-profiles-david-craven/
+    username = "cardiacexorcist+1@gmail.com"
+    password = "419CEpicStyle"
+
+    #  LOG IN TO LINKED IN
+    driver = webdriver.Chrome("driver/chromedriver")
+
+    driver.get('https://linkedin.com/login')
+
+    usernamefield = driver.find_element_by_id("username")
+    passwordfield = driver.find_element_by_id("password")
+
+    passwordfield.send_keys(password)
+    time.sleep(0.1)
+    usernamefield.send_keys(username)
+    time.sleep(0.1)
+
+    log_in_button = driver.find_element_by_xpath("//*[@type='submit']")
+    log_in_button.click()
+
+    time.sleep(.2)
+
+    driver.get("https://www.linkedin.com/jobs/")
+
+    time.sleep(.2)
+
+    joblinks = driver.find_elements_by_xpath("//a[@data-control-name='A_jobshome_job_link_click']")
+
+    [urls.append(job.get_attribute("href")) for job in joblinks]
+
+    timeout = 0
+    timeoutMax = 15
+
+    descriptions = {}
+
+    counter = 0
+    for url in urls:
+        scroll = 250
+        while(True):
+            try:
+                driver.get(url)
+                time.sleep(.5)
+                desc = driver.find_element_by_xpath("//div[@class='jobs-box__html-content jobs-description-content__text t-14 t-black--light t-normal']")
+                descriptions[counter] = desc.text
+                counter += 1
+                break
+            except:
+                driver.execute_script("window.scrollTo(0, " + str(scroll) + ");")
+                time.sleep(0.3)
+                scroll+=250
+                timeout+=1
+                if timeout>timeoutMax:
+                    break
+
+    file = open(filepath, "w+")
+    file.write(json.dumps(descriptions))
+
+    driver.close()
+
+
