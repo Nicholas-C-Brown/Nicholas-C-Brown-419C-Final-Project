@@ -7,7 +7,7 @@ import json
 urls = []
 
 
-def getjobs(filepath):
+def getjobs(filepath, jobQuery):
     # CODE ADAPTED FROM https://www.linkedin.com/pulse/how-easy-scraping-data-from-linkedin-profiles-david-craven/
     username = "cardiacexorcist+1@gmail.com"
     password = "419CEpicStyle"
@@ -30,27 +30,31 @@ def getjobs(filepath):
 
     time.sleep(.2)
 
-    driver.get("https://www.linkedin.com/jobs/")
+    driver.get("https://www.linkedin.com/jobs/search/?keywords=" + jobQuery[0].replace(" ","%20") + "&location=" + jobQuery[1])
 
-    time.sleep(.2)
+    time.sleep(0.3)
 
-    joblinks = driver.find_elements_by_xpath("//a[@data-control-name='A_jobshome_job_link_click']")
+    joblinks = driver.find_elements_by_xpath("//li[@class='occludable-update artdeco-list__item--offset-4 artdeco-list__item p0 ember-view']")
 
+    print(joblinks)
     [urls.append(job.get_attribute("href")) for job in joblinks]
+
+
 
     timeout = 0
     timeoutMax = 15
 
     descriptions = {}
 
-
-    for url in urls:
+    limit = 5
+    counter = 0
+    for url in joblinks:
         scroll = 250
         while(True):
             print(url)
             try:
-                driver.get(url)
                 time.sleep(.5)
+                url.click()
                 name = driver.find_element_by_xpath("//h2[@class='jobs-details-top-card__job-title t-20 t-black t-normal']")
                 print(name)
                 desc = driver.find_element_by_xpath("//div[@class='jobs-box__html-content jobs-description-content__text t-14 t-black--light t-normal']")
@@ -63,6 +67,9 @@ def getjobs(filepath):
                 timeout+=1
                 if timeout>timeoutMax:
                     break
+        counter+= 1
+        if counter==limit:
+            break
 
     file = open(filepath, "w+")
     file.write(json.dumps(descriptions))

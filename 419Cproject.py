@@ -10,17 +10,20 @@ import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
 
 
-jobspath = "data/1jobs.json"
-urlspath = "data/urls.json"
-skillspath = "data/userSkills.json"
-User = "Jodie Foster4"
+jobspath = "data/11jobs.json"
+urlspath = "data/11urls.json"
+skillspath = "data/11userSkills.json"
+
 
 # Search Google for accounts
-query = 'site:linkedin.com/in/ AND "University of British Columbia" AND "West Kelowna"'
+query = 'site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Computer Science"'
+search = "Developer"
+location = "Kelowna"
+jobQuery = [search,location]
 
 
 if (not os.path.exists(jobspath)):
-    findjobs.getjobs(jobspath)
+    findjobs.getjobs(jobspath,jobQuery)
 if (not os.path.exists(urlspath)):
     findaccountURLS.scrapeurls(urlspath, query)
 if (not os.path.exists(skillspath)):
@@ -50,8 +53,9 @@ jobwordbag = compilejobs.compile(data)
 skillswordbag = compileusers.stem_skills(allskills)
 
 jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag)
-
-names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, User)
+for key in userdict:
+    names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
+    break
 
 cosmatrix1 = agglo.matrix(vector1)
 
