@@ -11,7 +11,7 @@ username = "cardiacexorcist@gmail.com"
 password = "419CEpicStyle"
 
 #  LOG IN TO LINKED IN
-driver = webdriver.Chrome("driver/chromedriver.exe")
+driver = webdriver.Chrome("driver/chromedriver")
 driver.get('https://linkedin.com/login')
 
 usernamefield = driver.find_element_by_id("username")
@@ -42,6 +42,7 @@ print(urls)
 for testurl in urls:
     driver.get(testurl)
     scroll = 250
+    timeout = 0
     while True:
         driver.execute_script("window.scrollTo(0, " + str(scroll) + ");")
         try:
@@ -53,7 +54,11 @@ for testurl in urls:
         except:
             time.sleep(0.3)
             scroll+=250
-
+            timeout+=1
+            if timeout>20:
+                break
+    if timeout>20:
+        continue
 
     skills = []
 
