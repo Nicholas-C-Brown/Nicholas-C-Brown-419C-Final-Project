@@ -4,7 +4,7 @@ import json
 
 
 def writeJson(urlList):
-    with open("data/urls.json", "w+") as fout:
+    with open("data/1urls.json", "w+") as fout:
         out = json.dumps(urlList)
         fout.write(out)
 
@@ -26,9 +26,9 @@ def addUrls(linkedInUrls, urls):
 
 
 # Search Google for accounts
-query = 'site:linkedin.com/in/ AND "Kelowna" AND "University Of British Columbia"'
+query = 'site:linkedin.com/in/ AND "Python" AND "Javascript"'
 
-searchDriver = webdriver.Chrome("/Users/Nate/Desktop/cosc419/project/chromedriver")
+searchDriver = webdriver.Chrome("driver/chromedriver.exe")
 searchDriver.get("https://www.google.ca")
 
 searchQuery = searchDriver.find_element_by_name("q")

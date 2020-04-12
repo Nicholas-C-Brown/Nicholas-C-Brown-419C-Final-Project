@@ -1,7 +1,5 @@
-import ipython_genutils
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from parsel import Selector
 import time
 import csv
 import json
@@ -32,7 +30,7 @@ time.sleep(.2)
 # Open saved urls
 linkedIn = []
 urls = []
-with open("data/urls.json", "r") as fin:
+with open("data/1urls.json", "r") as fin:
     data = fin.readline()
     linkedIn = json.loads(data)
     for url in linkedIn:
@@ -67,10 +65,10 @@ for testurl in urls:
         print(skill)
 
 
-    with open("data/userSkills.json", "r") as fin:
+    with open("data/1userSkills.json", "r") as fin:
         skilldict = json.load(fin)
 
-    with open("data/userSkills.json", "w") as fout:
+    with open("data/1userSkills.json", "w") as fout:
         skilldict[str(count)] = skills
         count+=1
         skillsout = json.dumps(skilldict)
