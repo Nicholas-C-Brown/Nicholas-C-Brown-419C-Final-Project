@@ -3,22 +3,16 @@ from selenium.webdriver.common.keys import Keys
 import time
 import csv
 import json
-import pickle
-
 
 def scrapeskills(urlspath, skillspath):
 
     # CODE ADAPTED FROM https://www.linkedin.com/pulse/how-easy-scraping-data-from-linkedin-profiles-david-craven/
     count = 0
-    username = "cardiacexorcist@gmail.com"
+    username = "cardiacexorcist+1@gmail.com"
     password = "419CEpicStyle"
 
     #  LOG IN TO LINKED IN
     driver = webdriver.Chrome("driver/chromedriver")
-
-    # cookies = pickle.load(open("scraping/cookiefile", "rb"))
-    # for c in cookies:
-    #     driver.add_cookie(c)
 
     driver.get('https://linkedin.com/login')
 
@@ -32,11 +26,6 @@ def scrapeskills(urlspath, skillspath):
 
     log_in_button = driver.find_element_by_xpath("//*[@type='submit']")
     log_in_button.click()
-
-    # while(True):
-    #     time.sleep(20)
-    #     print(driver.get_cookies())
-    #     pickle.dump(driver.get_cookies(), open("scraping\cookiefile", "wb"))
 
     #** YEET
     time.sleep(.2)
@@ -60,7 +49,7 @@ def scrapeskills(urlspath, skillspath):
         driver.get(testurl)
         scroll = 250
         timeout = 0
-        timeoutMax = 10
+        timeoutMax = 15
 
         name = ""
         while(len(name) < 1):

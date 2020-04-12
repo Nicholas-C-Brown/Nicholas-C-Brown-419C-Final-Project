@@ -8,7 +8,7 @@ import scraping.scrapeuserskills as scrapeuserskills
 urlspath = "data/turls.json"
 skillspath = "data/tuserSkills.json"
 # Search Google for accounts
-query = 'site:linkedin.com/in/ AND "Programmer" AND "Kelowna"'
+query = 'site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Sauce"'
 
 if (not os.path.exists(urlspath)):
     findaccountURLS.scrapeurls(urlspath, query)
