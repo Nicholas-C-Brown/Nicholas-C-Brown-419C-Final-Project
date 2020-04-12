@@ -2,23 +2,23 @@
     "Users": [
       {
         "Name" : "John Jacobs",
-        "Skills": "Python, C, Java"
+        "Skills": "Python, C, Java, Computers, Programming, PHP, SQL, HTML5"
       },
       {
         "Name" : "Billy Bob",
-        "Skills": "Gardening, Construction"
+        "Skills": "Gardening, Garden Design, Landscaping, Construction, AutoCAD, Land Surveying"
       },
       {
         "Name" : "Hose Ricardo",
-        "Skills": "Video Editing, Photoshop, Illustrator"
+        "Skills": "Video Editing, Photoshop, Illustrator, Computers, HTML5"
       },
       {
         "Name" : "Tyrone Denim",
-        "Skills": "Python, Crying"
+        "Skills": "Customer Service, Leadership, Management, Gardening"
       },
       {
         "Name" : "Joe Mahma",
-        "Skills": "Dancing, Construction, Java"
+        "Skills": "Dancing, Construction, Java, Video Editing, Computers, PHP, Land Surveying"
       }
     ]
   }
