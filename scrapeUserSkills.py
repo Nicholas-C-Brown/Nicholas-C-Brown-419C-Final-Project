@@ -51,7 +51,7 @@ for testurl in urls:
             button.click()
             time.sleep(.5)
             all_spans = driver.find_elements_by_xpath('//span[@class="pv-skill-category-entity__name-text t-16 t-black t-bold"]')
-            name = driver.find_element_by_xpath('//li[@class="inline t-24 t-black t-normal break-words"').text
+            name = driver.find_element_by_xpath('//li[@class="inline t-24 t-black t-normal break-words"').textk
             break
         except:
             time.sleep(0.3)
