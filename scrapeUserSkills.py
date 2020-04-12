@@ -43,6 +43,7 @@ for testurl in urls:
     driver.get(testurl)
     scroll = 250
     timeout = 0
+    name = ""
     while True:
         driver.execute_script("window.scrollTo(0, " + str(scroll) + ");")
         try:
@@ -50,6 +51,7 @@ for testurl in urls:
             button.click()
             time.sleep(.5)
             all_spans = driver.find_elements_by_xpath('//span[@class="pv-skill-category-entity__name-text t-16 t-black t-bold"]')
+            name = driver.find_element_by_xpath('//li[@class="inline t-24 t-black t-normal break-words"').text
             break
         except:
             time.sleep(0.3)
@@ -61,6 +63,7 @@ for testurl in urls:
         continue
 
     skills = []
+    namedict = {}
 
     for span in all_spans:
         print(span.text)
@@ -72,9 +75,10 @@ for testurl in urls:
 
     with open("data/1userSkills.json", "r") as fin:
         skilldict = json.load(fin)
+        Users = list(skilldict['Users'])
 
     with open("data/1userSkills.json", "w") as fout:
-        skilldict[str(count)] = skills
+        skilldict[namedict] = skills
         count+=1
         skillsout = json.dumps(skilldict)
         fout.write(skillsout)
