@@ -45,7 +45,7 @@ def cluster(cosmatrix, names, clustertype):
 
     labelList = names
 
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(15, 7))
     dendrogram(linked,
         color_threshold=1.2,
         orientation='top',
@@ -57,6 +57,7 @@ def cluster(cosmatrix, names, clustertype):
 
 def __dot(x, y):
     return sum(x_i * y_i for x_i, y_i in zip(x, y))
+
 def __mag(v):
     total = 0
     for num in v:
@@ -65,4 +66,6 @@ def __mag(v):
     return math.sqrt(total)
 def __cossim(x, y):
     return __dot(x, y) / (__mag(x) * __mag(y))
+
+
 

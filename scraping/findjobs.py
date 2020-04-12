@@ -43,16 +43,18 @@ def getjobs(filepath):
 
     descriptions = {}
 
-    counter = 0
+
     for url in urls:
         scroll = 250
         while(True):
+            print(url)
             try:
                 driver.get(url)
                 time.sleep(.5)
+                name = driver.find_element_by_xpath("//h2[@class='jobs-details-top-card__job-title t-20 t-black t-normal']")
+                print(name)
                 desc = driver.find_element_by_xpath("//div[@class='jobs-box__html-content jobs-description-content__text t-14 t-black--light t-normal']")
-                descriptions[counter] = desc.text
-                counter += 1
+                descriptions[name.text] = desc.text
                 break
             except:
                 driver.execute_script("window.scrollTo(0, " + str(scroll) + ");")

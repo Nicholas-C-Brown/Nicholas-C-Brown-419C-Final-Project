@@ -9,7 +9,7 @@ def compile(data):
     stopwords = []
     punctuationextra = "‘‘’“”â€1234567890(){}[]\n"
 
-    bagofwords = []
+    bagofwords = {}
 
     # Read list of stopwords
     stopurl = urlopen("https://people.ok.ubc.ca/bowenhui/analytics/asgns/a2/stopwords.txt")
@@ -21,7 +21,7 @@ def compile(data):
         # add it to the list of stopwords
         stopwords.append(line)
 
-    for jobnum, desc in data.items():
+    for jobname, desc in data.items():
         desc = desc.lower()
 
         # split into words by white space
@@ -50,6 +50,6 @@ def compile(data):
             if "\\" not in stemmed_word:
                 stemmed.append(stemmed_word)
 
-        bagofwords.append(stemmed)
+        bagofwords[jobname] = stemmed
 
     return bagofwords

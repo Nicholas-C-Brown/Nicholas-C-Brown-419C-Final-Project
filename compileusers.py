@@ -69,7 +69,8 @@ def stem_skills(skills):
 
         for word in stripped:
             stemmed_word = ps.stem(word)
-            bagofwords.append(stemmed_word)
+            if "skill" not in word:
+                bagofwords.append(stemmed_word)
 
 
 
