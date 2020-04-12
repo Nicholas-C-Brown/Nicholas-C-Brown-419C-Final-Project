@@ -13,7 +13,7 @@ username = "cardiacexorcist@gmail.com"
 password = "419CEpicStyle"
 
 #  LOG IN TO LINKED IN
-driver = webdriver.Chrome("/Users/Nate/Desktop/cosc419/project/chromedriver")
+driver = webdriver.Chrome("driver/chromedriver.exe")
 driver.get('https://linkedin.com/login')
 
 usernamefield = driver.find_element_by_id("username")
