@@ -1,3 +1,5 @@
+import math
+
 def compile(data):
     users = data["Users"]
 
@@ -10,7 +12,7 @@ def compile(data):
     for user in users:
         name = user["Name"]
         #get user's skills as a list split by ','
-        skills = user["Skills"].split(",")
+        skills = user["Skills"].split(", ")
         userdict[name] = skills
 
         #append the user's skills to the list of all skills
@@ -30,7 +32,7 @@ def compile(data):
 
     popskills = {}
     for skill, count in skillscount.items():
-         if count >= average:
+         if count > math.ceil(average):
              popskills[skill] = count
 
     print("LIST OF ALL SKILLS")
@@ -43,6 +45,7 @@ def compile(data):
     print()
 
     return userdict, allskills, popskills
+
 
 
 

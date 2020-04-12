@@ -53,10 +53,6 @@ def cluster(cosmatrix, names, clustertype):
         distance_sort='descending',
         show_leaf_counts=True)
 
-    print("DENDROGRAM")
-    print(dendrogram)
-    print()
-
     plt.show()
 
 def __dot(x, y):
