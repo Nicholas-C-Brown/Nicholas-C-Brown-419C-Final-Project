@@ -5,18 +5,19 @@ import agglo
 import agglouserjob
 import compilejobs
 import parsejobskills
-import scraping.findaccountURLS as findaccountURLS
+# import scraping.findaccountURLS as findaccountURLS
+import findaccountUrlsV2 as findaccountURLS
 import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
 
 
 jobspath = "data/11jobs.json"
-urlspath = "data/111urls.json"
+urlspath = "data/X111urls.json"
 skillspath = "data/111userSkills.json"
 
 
 # Search Google for accounts
-query = 'site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Computer Science"'
+query = ["UBC","Kelowna"]
 search = "Developer"
 location = "Kelowna"
 jobQuery = [search,location]
