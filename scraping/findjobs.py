@@ -46,7 +46,7 @@ def getjobs(filepath, jobQuery):
 
     descriptions = {}
 
-    limit = 5
+    limit = 15
     counter = 0
     for url in joblinks:
         scroll = 250

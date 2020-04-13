@@ -19,9 +19,10 @@ def scrapeurls(filepath, query, pages):
 
     def addUrls(linkedInUrls, urls):
         for url in linkedInUrls:
-            if len(url) > 1:
-                if not url.split("/in/")[1] == "...":
-                    urls.append(url)
+            if url not in urls:
+                if len(url) > 1:
+                    if not url.split("/in/")[1] == "...":
+                        urls.append(url)
         return urls
 
     searchDriver = webdriver.Chrome("driver/chromedriver")

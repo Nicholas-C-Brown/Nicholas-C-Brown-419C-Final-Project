@@ -3,6 +3,9 @@ from selenium.webdriver.common.keys import Keys
 import json
 import time
 
+
+######## BAD BAD - LINKEDIN DOESNT LET U SEARCH WITH NO CONNECTIONS GO BACK TO OG
+
 def scrapeurls(filepath, query, pages):
     username = "cardiacexorcist+1@gmail.com"
     password = "419CEpicStyle"
@@ -34,9 +37,11 @@ def scrapeurls(filepath, query, pages):
 
     urls = []
 
-    userlinks = driver.find_elements_by_xpath("//a[@data-control-name='search_srp_result']")
+    userlinks = driver.find_elements_by_xpath("//a[@class='search-result__result-link ember-view']")
 
     [urls.append(user.get_attribute("href")) for user in userlinks]
 
     writeJson(urls)
+
+
 

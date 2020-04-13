@@ -5,20 +5,19 @@ import agglo
 import agglouserjob
 import compilejobs
 import parsejobskills
-# import scraping.findaccountURLS as findaccountURLS
-import findaccountUrlsV2 as findaccountURLS
+import scraping.findaccountURLS as findaccountURLS
 import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
 
 
-jobspath = "data/11jobs.json"
-urlspath = "data/X111urls.json"
-skillspath = "data/111userSkills.json"
+jobspath = "data/5PagesJobs.json"
+urlspath = "data/5PagesURLS.json"
+skillspath = "data/5PagesSkills.json"
 
 
 # Search Google for accounts
-query = ["UBC","Kelowna"]
-search = "Developer"
+query = ['site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Undergraduate']
+search = "junior"
 location = "Kelowna"
 jobQuery = [search,location]
 
@@ -26,7 +25,7 @@ jobQuery = [search,location]
 if (not os.path.exists(jobspath)):
     findjobs.getjobs(jobspath,jobQuery)
 if (not os.path.exists(urlspath)):
-    findaccountURLS.scrapeurls(urlspath, query,3)
+    findaccountURLS.scrapeurls(urlspath, query,5)
 if (not os.path.exists(skillspath)):
     scrapeuserskills.scrapeskills(urlspath, skillspath)
 
@@ -46,9 +45,9 @@ names = []
 agglo.cluster(cosmatrix, names, 'single')
 
 #Extract Job information
-file = open(jobspath,"r")
-data = json.loads(file.read())
-jobwordbag = compilejobs.compile(data)
+with open(jobspath, "r") as fin:
+    data = json.loads(fin.read())
+    jobwordbag = compilejobs.compile(data)
 
 
 skillswordbag = compileusers.stem_skills(allskills)
