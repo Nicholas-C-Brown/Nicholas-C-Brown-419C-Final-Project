@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import json
 
-def scrapeurls(filepath, query):
+def scrapeurls(filepath, query, pages):
 
     def writeJson(urlList):
         with open(filepath, "w+") as fout:
@@ -24,17 +24,23 @@ def scrapeurls(filepath, query):
                     urls.append(url)
         return urls
 
-    searchDriver = webdriver.Chrome("driver/chromedriver.exe")
+    searchDriver = webdriver.Chrome("driver/chromedriver")
     searchDriver.get("https://www.google.ca")
 
     searchQuery = searchDriver.find_element_by_name("q")
     searchQuery.send_keys(query)
     searchQuery.send_keys(Keys.RETURN)
 
-    urls = []
 
-    linkedinUrls = getUrls(searchDriver)
-    urls = addUrls(linkedinUrls,urls)
+    urls = []
+    for i in range(0,pages):
+        linkedinUrls = getUrls(searchDriver)
+        nextpage = searchDriver.find_element_by_class_name("G0iuSb")
+        nextpage.click()
+        urls = addUrls(linkedinUrls,urls)
+
+
+
     writeJson(urls)
 
     searchDriver.close()

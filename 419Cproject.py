@@ -11,8 +11,8 @@ import scraping.findjobs as findjobs
 
 
 jobspath = "data/11jobs.json"
-urlspath = "data/11urls.json"
-skillspath = "data/11userSkills.json"
+urlspath = "data/111urls.json"
+skillspath = "data/111userSkills.json"
 
 
 # Search Google for accounts
@@ -25,7 +25,7 @@ jobQuery = [search,location]
 if (not os.path.exists(jobspath)):
     findjobs.getjobs(jobspath,jobQuery)
 if (not os.path.exists(urlspath)):
-    findaccountURLS.scrapeurls(urlspath, query)
+    findaccountURLS.scrapeurls(urlspath, query,3)
 if (not os.path.exists(skillspath)):
     scrapeuserskills.scrapeskills(urlspath, skillspath)
 
