@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="220398a9-0b2c-42ad-ae20-9d268dccf944" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/419Cproject.py" beforeDir="false" afterPath="$PROJECT_DIR$/419Cproject.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X111urls.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/findaccountUrlsV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/findaccountUrlsV2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraping/findaccountURLS.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraping/findaccountURLS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraping/findjobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraping/findjobs.py" afterDir="false" />
-    </list>
+    <list default="true" id="220398a9-0b2c-42ad-ae20-9d268dccf944" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

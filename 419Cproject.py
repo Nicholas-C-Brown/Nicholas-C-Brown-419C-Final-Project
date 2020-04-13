@@ -17,9 +17,8 @@ skillspath = "data/5PagesSkills.json"
 
 # Search Google for accounts
 query = ['site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Undergraduate']
-search = "junior"
-location = "Kelowna"
-jobQuery = [search,location]
+jobQuery = ["junior","Kelowna"]
+
 
 
 if (not os.path.exists(jobspath)):

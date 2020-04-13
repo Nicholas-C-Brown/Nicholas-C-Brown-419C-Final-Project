@@ -1,0 +1,2 @@
+query = ['site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Undergraduate']
+jobQuery = ["junior","Kelowna"]
