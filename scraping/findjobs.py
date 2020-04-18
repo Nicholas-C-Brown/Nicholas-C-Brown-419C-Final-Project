@@ -7,7 +7,7 @@ import json
 urls = []
 
 
-def getjobs(filepath, jobQuery):
+def getjobs(filepath, jobQuery, offset):
     # CODE ADAPTED FROM https://www.linkedin.com/pulse/how-easy-scraping-data-from-linkedin-profiles-david-craven/
     username = "cardiacexorcist+1@gmail.com"
     password = "419CEpicStyle"
@@ -30,7 +30,7 @@ def getjobs(filepath, jobQuery):
 
     time.sleep(.2)
 
-    driver.get("https://www.linkedin.com/jobs/search/?keywords=" + jobQuery[0].replace(" ","%20") + "&location=" + jobQuery[1])
+    driver.get("https://www.linkedin.com/jobs/search/?keywords=" + jobQuery[0].replace(" ","%20") + "&location=" + jobQuery[1]+"&start=" + str(offset))
 
     time.sleep(0.3)
 
