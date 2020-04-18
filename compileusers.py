@@ -27,14 +27,20 @@ def compile(data):
                     skillscount[skill] = 1
 
     total = 0
+    tosort = []
     for skill, count in skillscount.items():
         total += count
+        tosort.append(count)
 
-    average = total/len(skillscount)
+
+    orderlist = sorted(tosort)
+    print(orderlist)
+
+    percentile = orderlist[round((95/100)*len(orderlist))]
 
     popskills = {}
     for skill, count in skillscount.items():
-         if count > math.ceil(average):
+         if count >= round(percentile):
              popskills[skill] = count
 
     print("LIST OF ALL SKILLS")
@@ -42,7 +48,7 @@ def compile(data):
     print("\nUSER SKILLS")
     [print(name, skills) for name,skills in userdict.items()]
     print("\nMOST POPULAR SKILLS")
-    print("Skill average:",average)
+    print("Skill 95th percentile:",percentile)
     [print(skill +": "+ str(count)) for skill, count in popskills.items()]
     print()
 

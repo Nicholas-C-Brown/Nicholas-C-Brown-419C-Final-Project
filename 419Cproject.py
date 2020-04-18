@@ -10,21 +10,25 @@ import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
 
 
-jobspath = "data/5PagesJobs.json"
-urlspath = "data/5PagesURLS.json"
-skillspath = "data/5PagesSkills.json"
+jobspath = "data/Jobs2.json"
+urlspath = "data/URLS1.json"
+skillspath = "data/Skills1.json"
 
 
 # Search Google for accounts
-query = ['site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Undergraduate']
-jobQuery = ["junior","Kelowna"]
+
+query = ['site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Undergraduate"']
+#jobs1 junior kelowna
+#jobs2 construction canada
+#jobs3        kelowna
+jobQuery = ["Construction","Canada"]
 
 
 
 if (not os.path.exists(jobspath)):
     findjobs.getjobs(jobspath,jobQuery)
 if (not os.path.exists(urlspath)):
-    findaccountURLS.scrapeurls(urlspath, query,5)
+    findaccountURLS.scrapeurls(urlspath, query,20)
 if (not os.path.exists(skillspath)):
     scrapeuserskills.scrapeskills(urlspath, skillspath)
 
@@ -41,7 +45,7 @@ cosmatrix = agglo.matrix(vectordict)
 names = []
 [names.append(name.split(" ")[0]) for name in userdict]
 
-agglo.cluster(cosmatrix, names, 'single')
+agglo.cluster(cosmatrix, names, 'ward')
 
 #Extract Job information
 with open(jobspath, "r") as fin:
@@ -51,14 +55,12 @@ with open(jobspath, "r") as fin:
 
 skillswordbag = compileusers.stem_skills(allskills)
 
-jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag)
+
 for key in userdict:
+    jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag)
     names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
-    break
-
-cosmatrix1 = agglo.matrix(vector1)
-
-agglo.cluster(cosmatrix1, names1, 'weighted')
+    cosmatrix1 = agglo.matrix(vector1)
+    agglo.cluster(cosmatrix1, names1, 'ward')
 
 
 #Compare each job to the list of skills

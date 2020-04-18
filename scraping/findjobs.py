@@ -13,7 +13,7 @@ def getjobs(filepath, jobQuery):
     password = "419CEpicStyle"
 
     #  LOG IN TO LINKED IN
-    driver = webdriver.Chrome("driver/chromedriver")
+    driver = webdriver.Chrome("driver/chromedriver.exe")
 
     driver.get('https://linkedin.com/login')
 
@@ -36,7 +36,6 @@ def getjobs(filepath, jobQuery):
 
     joblinks = driver.find_elements_by_xpath("//li[@class='occludable-update artdeco-list__item--offset-4 artdeco-list__item p0 ember-view']")
 
-    print(joblinks)
     [urls.append(job.get_attribute("href")) for job in joblinks]
 
 
@@ -51,12 +50,12 @@ def getjobs(filepath, jobQuery):
     for url in joblinks:
         scroll = 250
         while(True):
-            print(url)
+            #print(url)
             try:
                 time.sleep(.5)
                 url.click()
                 name = driver.find_element_by_xpath("//h2[@class='jobs-details-top-card__job-title t-20 t-black t-normal']")
-                print(name)
+                #print(name)
                 desc = driver.find_element_by_xpath("//div[@class='jobs-box__html-content jobs-description-content__text t-14 t-black--light t-normal']")
                 descriptions[name.text] = desc.text
                 break

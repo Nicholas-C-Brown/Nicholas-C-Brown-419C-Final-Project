@@ -16,9 +16,9 @@ def vectorize(userdict, allskills):
                     vector[i] = 1
         vectordict[name] = vector
 
-    print("USER VECTORS")
-    [print(vec, name) for name,vec in vectordict.items()]
-    print()
+    # print("USER VECTORS")
+    # [print(vec, name) for name,vec in vectordict.items()]
+    # print()
 
     return vectordict
 
@@ -45,14 +45,16 @@ def cluster(cosmatrix, names, clustertype):
 
     labelList = names
 
-    plt.figure(figsize=(15, 7))
+    plt.figure(figsize=(12, 9))
     dendrogram(linked,
-        color_threshold=1.2,
+        color_threshold=1.4,
         orientation='top',
         labels=labelList,
+        leaf_rotation=90,
         distance_sort='descending',
         show_leaf_counts=True)
 
+    plt.tight_layout()
     plt.show()
 
 def __dot(x, y):

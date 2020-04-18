@@ -20,10 +20,6 @@ def agglouserjob(jobreqs, skillswordbag, userdict, User):
 
     names = []
     for key in jobreqs:
-        try:
-            key = key.split(" ")[0][0:6] + " " + key.split(" ")[1][0:4]
-        except:
-            key = key[0:6]
         names.append(key)
 
     return names, agglo.vectorize(jobreqs, skillswordbag)

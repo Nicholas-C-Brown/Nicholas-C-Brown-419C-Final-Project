@@ -25,7 +25,7 @@ def scrapeurls(filepath, query, pages):
                         urls.append(url)
         return urls
 
-    searchDriver = webdriver.Chrome("driver/chromedriver")
+    searchDriver = webdriver.Chrome("driver/chromedriver.exe")
     searchDriver.get("https://www.google.ca")
 
     searchQuery = searchDriver.find_element_by_name("q")
