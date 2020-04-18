@@ -13,6 +13,7 @@ import scraping.findjobs as findjobs
 jobspath = "data/5PagesJobs.json"
 urlspath = "data/5PagesURLS.json"
 skillspath = "data/5PagesSkills.json"
+jobskillspath = "data/5PagesJobSkills.json"
 
 
 # Search Google for accounts
@@ -28,6 +29,7 @@ if (not os.path.exists(urlspath)):
 if (not os.path.exists(skillspath)):
     scrapeuserskills.scrapeskills(urlspath, skillspath)
 
+
 #Extract user information
 file = open(skillspath,"r")
 
@@ -41,7 +43,7 @@ cosmatrix = agglo.matrix(vectordict)
 names = []
 [names.append(name.split(" ")[0]) for name in userdict]
 
-agglo.cluster(cosmatrix, names, 'single')
+agglo.cluster(cosmatrix, names, 'weighted')
 
 #Extract Job information
 with open(jobspath, "r") as fin:
@@ -51,14 +53,19 @@ with open(jobspath, "r") as fin:
 
 skillswordbag = compileusers.stem_skills(allskills)
 
-jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag)
+jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag, jobskillspath)
+
+
 for key in userdict:
+    jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag, jobskillspath)
     names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
-    break
+    cosmatrix1 = agglo.matrix(vector1)
+    agglo.cluster(cosmatrix1, names1, 'complete')
 
-cosmatrix1 = agglo.matrix(vector1)
 
-agglo.cluster(cosmatrix1, names1, 'weighted')
+
+
+
 
 
 #Compare each job to the list of skills
