@@ -36,7 +36,7 @@ def scrapeurls(filepath, query, pages):
     urls = []
     for i in range(0,pages):
         linkedinUrls = getUrls(searchDriver)
-        nextpage = searchDriver.find_element_by_class_name("G0iuSb")
+        nextpage = searchDriver.find_element_by_xpath("//a[@id='pnnext']")
         nextpage.click()
         urls = addUrls(linkedinUrls,urls)
 

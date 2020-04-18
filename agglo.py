@@ -39,6 +39,7 @@ def matrix(vectordict):
     return cosmatrix
 
 def cluster(cosmatrix, names, clustertype):
+    plt.close()
     X = np.array(cosmatrix)
 
     linked = linkage(X, clustertype)

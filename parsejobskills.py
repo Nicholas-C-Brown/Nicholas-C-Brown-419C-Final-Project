@@ -1,5 +1,6 @@
-
-def parsejobskills(jobwordbag, skillswordbag):
+import json
+import os
+def parsejobskills(jobwordbag, skillswordbag, jobskillpath):
 
     jobreqs = {}
 
@@ -13,6 +14,10 @@ def parsejobskills(jobwordbag, skillswordbag):
 
         if not len(jobname) < 2:
             jobreqs[jobname] = skills
+    if (not os.path.exists(jobskillpath)):
+        with open(jobskillpath, "w+") as fout:
+            jsonout = json.dumps(jobreqs)
+            fout.write(jsonout)
 
     return jobreqs
 

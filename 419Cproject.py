@@ -10,27 +10,26 @@ import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
 
 
-jobspath = "data/Jobs2.json"
-urlspath = "data/URLS1.json"
-skillspath = "data/Skills1.json"
+jobspath = "data/BunchaJobsDevCompile.json"
+urlspath = "data/BunchaURLS.json"
+skillspath = "data/BunchaSkills.json"
+jobskillspath = "data/BunchaJobSkillsDevCompile.json"
 
 
 # Search Google for accounts
-
-query = ['site:linkedin.com/in/ AND "University of British Columbia" AND "Kelowna" AND "Undergraduate"']
-#jobs1 junior kelowna
-#jobs2 construction canada
-#jobs3        kelowna
-jobQuery = ["Construction","Canada"]
-
+query = ['site:linkedin.com/in/ AND ("University of British Columbia" OR "UBC") AND "Kelowna" AND "Undergraduate"']
+jobQuery = ["Software Developer","Kelowna"]
+pages = 15
+offset = 24
 
 
 if (not os.path.exists(jobspath)):
-    findjobs.getjobs(jobspath,jobQuery)
+    findjobs.getjobs(jobspath,jobQuery,offset)
 if (not os.path.exists(urlspath)):
-    findaccountURLS.scrapeurls(urlspath, query,20)
+    findaccountURLS.scrapeurls(urlspath, query, pages)
 if (not os.path.exists(skillspath)):
     scrapeuserskills.scrapeskills(urlspath, skillspath)
+
 
 #Extract user information
 file = open(skillspath,"r")
