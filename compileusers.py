@@ -36,7 +36,7 @@ def compile(data):
     orderlist = sorted(tosort)
     print(orderlist)
 
-    percentile = orderlist[round((95/100)*len(orderlist))]
+    percentile = orderlist[round((99/100)*len(orderlist))]
 
     popskills = {}
     for skill, count in skillscount.items():
@@ -48,7 +48,7 @@ def compile(data):
     print("\nUSER SKILLS")
     [print(name, skills) for name,skills in userdict.items()]
     print("\nMOST POPULAR SKILLS")
-    print("Skill 95th percentile:",percentile)
+    print("Skill 99th percentile:",percentile)
     [print(skill +": "+ str(count)) for skill, count in popskills.items()]
     print()
 

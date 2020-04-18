@@ -20,6 +20,7 @@ def agglouserjob(jobreqs, skillswordbag, userdict, User):
 
     names = []
     for key in jobreqs:
+        if len(key) > 30: key = key[0:20]
         names.append(key)
 
     return names, agglo.vectorize(jobreqs, skillswordbag)

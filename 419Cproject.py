@@ -56,10 +56,10 @@ skillswordbag = compileusers.stem_skills(allskills)
 
 
 for key in userdict:
-    jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag)
+    jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag, jobskillspath)
     names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
     cosmatrix1 = agglo.matrix(vector1)
-    agglo.cluster(cosmatrix1, names1, 'ward')
+    agglo.cluster(cosmatrix1, names1, 'single')
 
 
 #Compare each job to the list of skills
