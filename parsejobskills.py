@@ -18,7 +18,6 @@ def parsejobskills(jobwordbag, skillswordbag, jobskillpath):
         with open(jobskillpath, "w+") as fout:
             jsonout = json.dumps(jobreqs)
             fout.write(jsonout)
-
     return jobreqs
 
 

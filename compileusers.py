@@ -34,7 +34,6 @@ def compile(data):
 
 
     orderlist = sorted(tosort)
-    print(orderlist)
 
     percentile = orderlist[round((99/100)*len(orderlist))]
 
@@ -46,7 +45,7 @@ def compile(data):
     print("LIST OF ALL SKILLS")
     print(allskills)
     print("\nUSER SKILLS")
-    [print(name, skills) for name,skills in userdict.items()]
+    [print(name, skills, "\n") for name,skills in userdict.items()]
     print("\nMOST POPULAR SKILLS")
     print("Skill 99th percentile:",percentile)
     [print(skill +": "+ str(count)) for skill, count in popskills.items()]
@@ -58,9 +57,16 @@ def stem_skills(skills):
 
     ps = PorterStemmer()
 
+    stopwords = []
     punctuationextra = "‘‘’“”â€1234567890(){}[]\uf0a7\n"
 
     bagofwords = []
+
+    # Read list of stopwords
+    stopfile = open("stopwords.txt","r")
+    for line in stopfile:
+        line = line.replace("\n","")
+        stopwords.append(line)
 
     for skill in skills:
         skill = skill.lower()
@@ -72,8 +78,15 @@ def stem_skills(skills):
         table = str.maketrans('', '', string.punctuation + punctuationextra)
         stripped = [w.translate(table) for w in tokens]
 
+        # create array for filtered file
+        filtered = []
 
-        for word in stripped:
+        # remove stopwords
+        for w in stripped:
+            if w not in stopwords:
+                filtered.append(w)
+
+        for word in filtered:
             stemmed_word = ps.stem(word)
             if "skill" not in word:
                 bagofwords.append(stemmed_word)

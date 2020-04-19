@@ -30,12 +30,6 @@ def matrix(vectordict):
             cosvector.append(__cossim(vector1, vector2))
         cosmatrix.append(cosvector)
 
-    print("SIMILARITY MATRIX (ROUNDED)")
-    for vec in cosmatrix:
-        formattedvec = [ '%.2f' % elem for elem in vec]
-        print(formattedvec)
-    print()
-
     return cosmatrix
 
 def cluster(cosmatrix, names, clustertype):

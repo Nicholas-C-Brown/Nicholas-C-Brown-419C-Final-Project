@@ -1,4 +1,4 @@
-from urllib.request import urlopen
+
 from nltk.stem import PorterStemmer
 import string
 
@@ -12,22 +12,10 @@ def compile(data):
     bagofwords = {}
 
     # Read list of stopwords
-    with open("stopwords.txt" , "r") as fin:
-        hdata = fin.read()
-        for line in hdata:
-            line = line.replace("\n","")
-            stopwords.append(line)
-
-    # CHANGED STOPWORDS TO BE READ FROM LOCAL FILE
-
-    #stopurl = urlopen("https://people.ok.ubc.ca/bowenhui/analytics/asgns/a2/stopwords.txt")
-    # for line in stopurl:
-    #     # remove \n from word
-    #     line = line[0:len(line) - 1]
-    #     # convert to string
-    #     line = ch = str(line, 'utf-8')
-    #     # add it to the list of stopwords
-    #     stopwords.append(line)
+    stopfile = open("stopwords.txt","r")
+    for line in stopfile:
+        line = line.replace("\n","")
+        stopwords.append(line)
 
     for jobname, desc in data.items():
         desc = desc.lower()

@@ -59,7 +59,7 @@ for key in userdict:
     jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag, jobskillspath)
     names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
     cosmatrix1 = agglo.matrix(vector1)
-    agglo.cluster(cosmatrix1, names1, 'single')
+    agglo.cluster(cosmatrix1, names1, 'ward')
 
 
 #Compare each job to the list of skills
