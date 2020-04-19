@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from matplotlib import pyplot as plt
 
+
 def vectorize(userdict, allskills):
     vectordict = {}
     for name, skills in userdict.items():
@@ -22,6 +23,7 @@ def vectorize(userdict, allskills):
 
     return vectordict
 
+#Creates a cosine similarity matrix
 def matrix(vectordict):
     cosmatrix = []
     for user1, vector1 in vectordict.items():
@@ -32,6 +34,7 @@ def matrix(vectordict):
 
     return cosmatrix
 
+#Clusters data and outputs a dendrogram
 def cluster(cosmatrix, names, clustertype):
     plt.close()
     X = np.array(cosmatrix)
@@ -52,6 +55,7 @@ def cluster(cosmatrix, names, clustertype):
     plt.tight_layout()
     plt.show()
 
+#COSINE SIMILARITY CALCULATIONS
 def __dot(x, y):
     return sum(x_i * y_i for x_i, y_i in zip(x, y))
 
