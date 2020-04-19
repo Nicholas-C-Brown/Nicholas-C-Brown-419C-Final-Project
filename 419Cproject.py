@@ -5,15 +5,16 @@ import agglo
 import agglouserjob
 import compilejobs
 import parsejobskills
+import compare
 import scraping.findaccountURLS as findaccountURLS
 import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
 
 
-jobspath = "data/BunchaJobsDevCompile.json"
+jobspath = "data/BunchaJobsCompile.json"
 urlspath = "data/BunchaURLS.json"
 skillspath = "data/BunchaSkills.json"
-jobskillspath = "data/BunchaJobSkillsDevCompile.json"
+jobskillspath = "data/BunchaJobSkillsCompile.json"
 
 
 # Search Google for accounts
@@ -68,8 +69,13 @@ for name in jobreqs:
 
 agglo.cluster(cosmatrixjobs, namesjobs, 'ward')
 
-for user in userdict:
-    pass
+stemmeduserdict = {}
+for user,skills in userdict.items():
+    stemmedskills = compileusers.stem_skills(skills)
+    stemmeduserdict[user] = stemmedskills
+
+compare.comparejobs(stemmeduserdict, jobreqs, skillswordbag)
+
     #names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
 
 
