@@ -9,6 +9,7 @@ import compare
 import scraping.findaccountURLS as findaccountURLS
 import scraping.scrapeuserskills as scrapeuserskills
 import scraping.findjobs as findjobs
+import re
 
 
 # EDIT TO VIEW/CREATE DIFFERENT DATA SETS
@@ -51,7 +52,7 @@ vectordict = agglo.vectorize(userdict, allskills)
 cosmatrix = agglo.matrix(vectordict)
 
 names = []
-[names.append(name) for name in userdict]
+[names.append(re.sub('[0-9]+', '', name)) for name in userdict]
 
 agglo.cluster(cosmatrix, names, 'ward')
 
