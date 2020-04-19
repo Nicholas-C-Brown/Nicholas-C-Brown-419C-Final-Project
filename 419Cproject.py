@@ -49,33 +49,32 @@ agglo.cluster(cosmatrix, names, 'ward')
 #Extract Job information
 with open(jobspath, "r") as fin:
     data = json.loads(fin.read())
-    jobwordbag = compilejobs.compile(data)
-
+    jobdict = compilejobs.compile(data)
 
 skillswordbag = compileusers.stem_skills(allskills)
+jobreqs = parsejobskills.parsejobskills(jobdict, skillswordbag, jobskillspath)
+
+vectordictjobs = agglo.vectorize(jobreqs, skillswordbag)
+
+cosmatrixjobs = agglo.matrix(vectordictjobs)
+
+namesjobs = []
+for name in jobreqs:
+    if len(name) <= 50:
+        namesjobs.append(name)
+    else:
+        namesjobs.append(name.split(" ")[0])
 
 
-for key in userdict:
-    jobreqs = parsejobskills.parsejobskills(jobwordbag, skillswordbag, jobskillspath)
-    names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
-    cosmatrix1 = agglo.matrix(vector1)
-    agglo.cluster(cosmatrix1, names1, 'ward')
+agglo.cluster(cosmatrixjobs, namesjobs, 'ward')
+
+for user in userdict:
+    pass
+    #names1, vector1 = agglouserjob.agglouserjob(jobreqs, skillswordbag, userdict, key)
+
 
 
 #Compare each job to the list of skills
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -9,7 +9,7 @@ def compile(data):
     stopwords = []
     punctuationextra = "‘‘’“”â€1234567890(){}[]\n"
 
-    bagofwords = {}
+    jobdict = {}
 
     # Read list of stopwords
     stopfile = open("stopwords.txt","r")
@@ -46,6 +46,6 @@ def compile(data):
             if "\\" not in stemmed_word:
                 stemmed.append(stemmed_word)
 
-        bagofwords[jobname] = stemmed
+        jobdict[jobname] = stemmed
 
-    return bagofwords
+    return jobdict

@@ -42,7 +42,7 @@ def cluster(cosmatrix, names, clustertype):
 
     plt.figure(figsize=(12, 9))
     dendrogram(linked,
-        color_threshold=1.4,
+        color_threshold=2.2,
         orientation='top',
         labels=labelList,
         leaf_rotation=90,
